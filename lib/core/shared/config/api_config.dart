@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/config/connectivity_checker.dart';
-import '/core/shared/error/error_message.dart';
 import '/core/shared/error/exceptions.dart';
 
 class ApiConfig {
@@ -22,14 +22,14 @@ class ApiConfig {
     try {
       ///Valid internet connection
       if (await connectivityChecker.checkingConnection() == false) {
-        throw NoConnectionException(ErrorMessage.noConnection);
+        throw NoConnectionException(S.current.noConnection);
       }
 
       final response =
           await client.get(Uri.parse(uri), headers: headers).timeout(
         const Duration(seconds: 20),
         onTimeout: () {
-          throw TimeOutException(ErrorMessage.timeOut);
+          throw TimeOutException(S.current.timeOut);
         },
       );
       return _responseManager(response);
@@ -44,16 +44,16 @@ class ApiConfig {
         if(response.body != null && response.body.toString().isNotEmpty){
           return json.decode(response.body);
         }else{
-          throw NoDataException(ErrorMessage.noData);
+          throw NoDataException(S.current.noData);
         }
       case 201:
-        throw UnauthorisedException(ErrorMessage.unauthorised);
+        throw UnauthorisedException(S.current.unauthorised);
       case 400:
-        throw BadRequestException(ErrorMessage.noData);
+        throw BadRequestException(S.current.noData);
       case 500:
-        throw ServerException(ErrorMessage.noData);
+        throw ServerException(S.current.noData);
       default:
-        throw NoDataException(ErrorMessage.noData);
+        throw NoDataException(S.current.noData);
     }
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/error/failure.dart';
-import '/core/shared/error/error_message.dart';
 import '/features/registration_form/presentation/widgets/address_widget.dart';
 
 part 'address_event.dart';
@@ -47,9 +47,9 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         addressList: _addressWidgetList,
       ));
     }else{
-      emit(const AddressState.error(
+      emit(AddressState.error(
         failure: Failure.noActionComplete(
-          message: ErrorMessage.completeField,
+          message: S.current.completeField,
         ),
       ));
     }
@@ -69,9 +69,9 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
         ));
       }
     } else {
-      emit(const AddressState.error(
+      emit(AddressState.error(
         failure: Failure.noActionComplete(
-          message: ErrorMessage.deleteNoAllow,
+          message: S.current.deleteNoAllow,
         ),
       ));
     }

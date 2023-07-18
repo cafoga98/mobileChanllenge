@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/utils/image_repository.dart';
 import '/core/shared/utils/styles_repository.dart';
 import '/core/domain/bloc/drawer_bloc/drawer_bloc.dart';
@@ -38,7 +39,7 @@ class StandardDrawer extends StatelessWidget {
                       height: 10.h,
                     ),
                     Text(
-                      'Bienvenido a Marvel',
+                      S.current.welcome,
                       style: standardListTileTitle,
                     ),
                     Text(
@@ -50,7 +51,7 @@ class StandardDrawer extends StatelessWidget {
               ),
               ListTile(
                 title: Text(
-                  'Tu información',
+                  S.current.yourInformation,
                   style: standardListTileTitle,
                 ),
                 subtitle: Padding(
@@ -60,7 +61,7 @@ class StandardDrawer extends StatelessWidget {
                     children: [
                       ListTile(
                         title: Text(
-                          'Tu cumpleaños',
+                          S.current.birthdate,
                           style: standardListTileTitle,
                         ),
                         subtitle: Text(
@@ -71,7 +72,7 @@ class StandardDrawer extends StatelessWidget {
                       ),
                       ListTile(
                         title: Text(
-                          'Direcciones registradas',
+                          S.current.registeredAddresses,
                           style: standardListTileTitle,
                         ),
                         subtitle: ListView.separated(

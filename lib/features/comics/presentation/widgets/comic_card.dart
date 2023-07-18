@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/utils/launch_urls.dart';
 import '/core/shared/utils/styles_repository.dart';
 import '/features/comics/domain/entities/marvel_comic.dart';
@@ -83,14 +84,14 @@ class ComicCard extends StatelessWidget {
                             : Flexible(
                                 flex: 1,
                                 child: Text(
-                                  'Autor: ${marvelComic.creators.items.first['name']}',
+                                  '${S.current.author}: ${marvelComic.creators.items.first['name']}',
                                   style: standardAutorComicStyle,
                                 ),
                               ),
                       ],
                     ),
                   ),
-                  Text('Tap for more info', style: standardInfoStyle,)
+                  Text(S.current.moreInfo, style: standardInfoStyle,)
                 ],
               ),
             ),

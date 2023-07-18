@@ -1,7 +1,7 @@
-import 'package:doublevchallenge/core/shared/error/error_message.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '/generated/l10n.dart';
 import '/core/domain/entities/user.dart';
 import '/core/shared/error/failure.dart';
 import '/core/data/repository/implementation/local_storage_repository.dart';
@@ -27,20 +27,18 @@ class SaveBloc extends Bloc<SaveEvent, SaveState> {
       final response = await localStorageRepository.setLocalUser(user: user);
       if (response) {
 
-        emit(const SaveState.done(message: 'Registro exitoso'));
+        emit(SaveState.done(message: S.current.successfulRegistration));
       } else {
-        emit(
-          const SaveState.error(
+        emit(SaveState.error(
             failure:
-                Failure.noActionComplete(message: ErrorMessage.noSaveLocalData),
+                Failure.noActionComplete(message: S.current.noSaveLocalData),
           ),
         );
       }
     } catch (e) {
-      emit(
-        const SaveState.error(
+      emit(SaveState.error(
           failure:
-              Failure.noActionComplete(message: ErrorMessage.noSaveLocalData),
+              Failure.noActionComplete(message: S.current.noSaveLocalData),
         ),
       );
     }

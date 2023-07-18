@@ -1,12 +1,13 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:doublevchallenge/core/shared/config/api_config.dart';
-import 'package:doublevchallenge/core/shared/config/environment_config.dart';
-import 'package:doublevchallenge/features/comics/data/repositories/implementation/comic_repository.dart';
-import 'package:doublevchallenge/features/comics/data/services/implementation/comic_service.dart';
-import 'package:doublevchallenge/features/comics/domain/bloc/comic_bloc/comic_bloc.dart';
-import 'package:doublevchallenge/features/comics/presentation/pages/comic_sub_page.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '/core/shared/config/api_config.dart';
+import '/core/shared/config/environment_config.dart';
+import '/features/comics/domain/bloc/comic_bloc/comic_bloc.dart';
+import '/features/comics/presentation/pages/comic_sub_page.dart';
+import '/features/comics/data/services/implementation/comic_service.dart';
+import '/features/comics/data/repositories/implementation/comic_repository.dart';
 
 @RoutePage()
 class ComicsPage extends StatelessWidget {

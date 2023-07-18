@@ -1,7 +1,8 @@
-import 'package:doublevchallenge/core/shared/utils/colors_repository.dart';
-import 'package:doublevchallenge/core/shared/utils/styles_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '/core/shared/utils/colors_repository.dart';
+import '/core/shared/utils/styles_repository.dart';
 
 class StandardButton extends StatelessWidget {
   final GestureTapCallback? onTap;

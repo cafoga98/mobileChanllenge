@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/utils/image_repository.dart';
 import '/core/shared/utils/common_validators.dart';
 import '/core/presentation/widgets/check_screen.dart';
@@ -93,35 +94,32 @@ class RegistrationPage extends StatelessWidget {
                       runSpacing: 12.h,
                       children: [
                         CustomTextFormField(
-                          hintText: 'Nombre',
+                          hintText: S.current.name,
                           iconOutline: const Icon(Icons.person_outline),
                           textInputType: TextInputType.name,
                           validator: CommonValidators.standardValidator,
                           onSave: (name) {
                             context.read<SaveBloc>().user.name = name;
-                            print('Nombre: $name');
                           },
                         ),
                         CustomTextFormField(
-                          hintText: 'Apellido',
+                          hintText: S.current.surname,
                           iconOutline:
                               const Icon(Icons.account_circle_outlined),
                           textInputType: TextInputType.name,
                           validator: CommonValidators.standardValidator,
                           onSave: (surname) {
                             context.read<SaveBloc>().user.lastName = surname;
-                            print('Apellido: $surname');
                           },
                         ),
                         DateFormField(
-                          hintText: 'Fecha de nacimiento',
+                          hintText: S.current.birthdate,
                           iconOutline:
                               const Icon(Icons.calendar_month_outlined),
                           validator: CommonValidators.standardValidator,
                           onSave: (date) {
                             context.read<SaveBloc>().user.birthdate =
                                 DateTime.parse(date!);
-                            print('Fecha de nacimiento: $date');
                           },
                         ),
                         BlocBuilder<AddressBloc, AddressState>(
@@ -142,7 +140,7 @@ class RegistrationPage extends StatelessWidget {
                           ),
                         ),
                         StandardButton(
-                          title: 'Registrarte',
+                          title: S.current.register,
                           onTap: () async {
                             if (_formKey.currentState!.validate()) {
                               Future.microtask(

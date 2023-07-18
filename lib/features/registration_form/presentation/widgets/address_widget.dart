@@ -1,10 +1,11 @@
-import 'package:doublevchallenge/features/registration_form/domain/save_bloc/save_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/utils/common_validators.dart';
 import '/core/presentation/widgets/custom_form_field.dart';
+import '/features/registration_form/domain/save_bloc/save_bloc.dart';
 import '/features/registration_form/domain/address_bloc/address_bloc.dart';
 
 class AddressWidget extends StatefulWidget {
@@ -34,7 +35,7 @@ class _AddressWidgetState extends State<AddressWidget> {
           flex: 10,
           child: CustomTextFormField(
             initialValue: widget.nameField.isNotEmpty ? widget.nameField : null,
-            hintText: 'Dirección',
+            hintText: S.current.address,
             textInputType: TextInputType.streetAddress,
             validator: CommonValidators.standardValidator,
             iconOutline: const Icon(Icons.pin_drop_outlined),
@@ -52,7 +53,6 @@ class _AddressWidgetState extends State<AddressWidget> {
             },
             onSave: (address){
               context.read<SaveBloc>().user.addresses!.add(address!);
-              print('Dirección: $address');
             },
           ),
         ),

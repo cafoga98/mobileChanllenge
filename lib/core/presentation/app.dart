@@ -1,14 +1,15 @@
-import 'package:doublevchallenge/core/domain/bloc/drawer_bloc/drawer_bloc.dart';
-import 'package:doublevchallenge/features/registration_form/domain/save_bloc/save_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/auto_route/router.dart';
 import '/core/shared/config/api_config.dart';
 import '/core/shared/config/environment_config.dart';
+import '/core/domain/bloc/drawer_bloc/drawer_bloc.dart';
+import '/features/registration_form/domain/save_bloc/save_bloc.dart';
 import '/core/data/repository/implementation/local_storage_repository.dart';
 
 
@@ -66,6 +67,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
                 routeInformationParser:
                 widget.getIt<AppRouter>().defaultRouteParser(),
                 routerDelegate: widget.getIt<AppRouter>().delegate(),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
                 builder: (context, child) {
                   return Builder(
                     builder: (context) {

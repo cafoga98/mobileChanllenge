@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '/generated/l10n.dart';
 import '/core/shared/error/failure.dart';
 import '/core/domain/entities/user.dart';
 import '/core/shared/error/exceptions.dart';
-import '/core/shared/error/error_message.dart';
 import '/core/data/repository/interfaces/local_storage_repository_interface.dart';
 
 class LocalStorageRepository extends LocalStorageRepositoryInterface {
@@ -35,9 +35,9 @@ class LocalStorageRepository extends LocalStorageRepositoryInterface {
       return sharedPreferences
           .setString(userKey, userEncode)
           .catchError((onError) {
-        throw NoSaveLocalStoreException(ErrorMessage.noSaveLocalData);
+        throw NoSaveLocalStoreException(S.current.noSaveLocalData);
       }).timeout(const Duration(seconds: 20), onTimeout: () {
-        throw TimeOutLocalStoreException(ErrorMessage.timeOutLocal);
+        throw TimeOutLocalStoreException(S.current.timeOutLocal);
       });
     } catch (e) {
       throw NoCompleteLocalStoreException(e.toString());
